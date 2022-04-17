@@ -1,15 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Saplimg's 404 Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+</style>
 </head>
-
 <body>
-	
-	
-	<iframe src="https://embed.twitch.tv?channel=babysaplimgxwatchtwitch&amp;height=480&amp;layout=video&amp;parent=babysaplimgx.ml&amp;referrer=https%3A%2F%2Fbabysaplimgx.ml%2F&amp;width=854" allowfullscreen="" scrolling="no" frameborder="0" allow="autoplay; fullscreen" title="Twitch" sandbox="allow-modals allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" width="854" height="480"></iframe>
-	
-	
+
+<video autoplay muted loop id="myVideo">
+  <source src="images/404.mp4" type="video/mp4">
+</video>
 </body>
 </html>
