@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Drawing Plate for Phones</title>
+    <title>HTML Drawing Plate</title>
     <style>
   body {
     margin: 0;
@@ -41,24 +41,33 @@
 
   let isDrawing = false;
 
-  canvas.addEventListener("touchstart", (event) => {
+  canvas.addEventListener("mousedown", startDrawing);
+  canvas.addEventListener("touchstart", startDrawing);
+
+  canvas.addEventListener("mouseup", stopDrawing);
+  canvas.addEventListener("touchend", stopDrawing);
+
+  canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("touchmove", draw);
+
+  function startDrawing(event) {
     isDrawing = true;
-    draw(event.touches[0]);
-  });
+    draw(event);
+  }
 
-  canvas.addEventListener("touchmove", (event) => {
-    if (!isDrawing) return;
-    draw(event.touches[0]);
-  });
-
-  canvas.addEventListener("touchend", () => {
+  function stopDrawing() {
     isDrawing = false;
     context.beginPath();
-  });
+  }
 
-  function draw(touch) {
-    const x = touch.clientX - canvas.getBoundingClientRect().left;
-    const y = touch.clientY - canvas.getBoundingClientRect().top;
+  function draw(event) {
+    if (!isDrawing) return;
+
+    const clientX = event.clientX || event.touches[0].clientX;
+    const clientY = event.clientY || event.touches[0].clientY;
+
+    const x = clientX - canvas.getBoundingClientRect().left;
+    const y = clientY - canvas.getBoundingClientRect().top;
 
     context.lineWidth = 5;
     context.lineCap = "round";
