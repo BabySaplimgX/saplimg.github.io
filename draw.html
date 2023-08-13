@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Drawing Plate with Line Styles and Pencil Sizes</title>
+    <title>HTML Drawing Plate for Phones</title>
     <style>
   body {
     margin: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     background-color: #f0f0f0;
@@ -16,24 +16,17 @@
   canvas {
     border: 1px solid #000;
   }
+  .controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+  }
 </style>
 </head>
 <body>
 <canvas id="drawingCanvas"></canvas>
 <div class="controls">
     <input type="color" id="colorPicker" value="#000000">
-    <select id="lineStyleSelect">
-        <option value="solid">Solid</option>
-        <option value="dashed">Dashed</option>
-        <option value="dotted">Dotted</option>
-    </select>
-    <select id="pencilSizeSelect">
-        <option value="1">Extra Small</option>
-        <option value="3">Small</option>
-        <option value="5">Medium</option>
-        <option value="10">Large</option>
-        <option value="20">Extra Large</option>
-    </select>
     <button id="clearButton">Clear</button>
 </div>
 
@@ -41,8 +34,6 @@
   const canvas = document.getElementById("drawingCanvas");
   const context = canvas.getContext("2d");
   const colorPicker = document.getElementById("colorPicker");
-  const lineStyleSelect = document.getElementById("lineStyleSelect");
-  const pencilSizeSelect = document.getElementById("pencilSizeSelect");
   const clearButton = document.getElementById("clearButton");
 
   canvas.width = window.innerWidth - 20;
@@ -50,36 +41,28 @@
 
   let isDrawing = false;
 
-  canvas.addEventListener("mousedown", () => {
+  canvas.addEventListener("touchstart", (event) => {
     isDrawing = true;
+    draw(event.touches[0]);
   });
 
-  canvas.addEventListener("mouseup", () => {
+  canvas.addEventListener("touchmove", (event) => {
+    if (!isDrawing) return;
+    draw(event.touches[0]);
+  });
+
+  canvas.addEventListener("touchend", () => {
     isDrawing = false;
     context.beginPath();
   });
 
-  canvas.addEventListener("mousemove", draw);
+  function draw(touch) {
+    const x = touch.clientX - canvas.getBoundingClientRect().left;
+    const y = touch.clientY - canvas.getBoundingClientRect().top;
 
-  function draw(event) {
-    if (!isDrawing) return;
-
-    const x = event.clientX - canvas.getBoundingClientRect().left;
-    const y = event.clientY - canvas.getBoundingClientRect().top;
-
-    context.lineCap = "round"; // Set the line cap to round for a pencil-like effect
-
-    context.lineWidth = parseInt(pencilSizeSelect.value);
+    context.lineWidth = 5;
+    context.lineCap = "round";
     context.strokeStyle = colorPicker.value;
-
-    const selectedLineStyle = lineStyleSelect.value;
-    if (selectedLineStyle === "dashed") {
-      context.setLineDash([10, 5]);
-    } else if (selectedLineStyle === "dotted") {
-      context.setLineDash([2, 5]);
-    } else {
-      context.setLineDash([]);
-    }
 
     context.lineTo(x, y);
     context.stroke();
