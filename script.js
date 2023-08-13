@@ -24,3 +24,28 @@ document.addEventListener('DOMContentLoaded', () => {
         modeToggle.textContent = isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode';
     }
 });
+
+function draw(event) {
+  if (!isDrawing) return;
+
+  const x = event.clientX - canvas.getBoundingClientRect().left;
+  const y = event.clientY - canvas.getBoundingClientRect().top;
+
+  context.lineWidth = parseInt(pencilSizeSelect.value);
+  context.strokeStyle = colorPicker.value;
+  context.lineCap = "round"; // Set the line cap to round
+
+  const selectedLineStyle = lineStyleSelect.value;
+  if (selectedLineStyle === "dashed") {
+    context.setLineDash([10, 5]);
+  } else if (selectedLineStyle === "dotted") {
+    context.setLineDash([2, 5]);
+  } else {
+    context.setLineDash([]);
+  }
+
+  context.lineTo(x, y);
+  context.stroke();
+  context.beginPath();
+  context.moveTo(x, y);
+}
