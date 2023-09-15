@@ -51,14 +51,8 @@ video {
 <div id="overlay">
   <div id="clock">12:34:56</div>
 </div>
-<widgetbot
-  server="985517034341294153"
-  channel="999724713725136997"
-  width="800"
-  height="600"
-></widgetbot>
 
-<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed">
+<script>
 function updateClock() {
   const now = new Date();
   const hours = String(now.getHours()).padStart(2, '0');
@@ -70,6 +64,12 @@ function updateClock() {
 
 // Update the clock every second
 setInterval(updateClock, 1000);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
+  new Crate({
+    server: '985517034341294153',
+    channel: '999724713725136997'
+  })
 </script>
 	<video autoplay muted loop>
       <source src="./images/Soon.mp4" type="video/mp4" />
