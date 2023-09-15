@@ -51,8 +51,14 @@ video {
 <div id="overlay">
   <div id="clock">12:34:56</div>
 </div>
+<widgetbot
+  server="1148190992290299924"
+  channel="1148190994764943407"
+  width="800"
+  height="600"
+></widgetbot>
 
-<script>
+<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed">
 function updateClock() {
   const now = new Date();
   const hours = String(now.getHours()).padStart(2, '0');
@@ -65,13 +71,6 @@ function updateClock() {
 // Update the clock every second
 setInterval(updateClock, 1000);
 </script>
- <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
-    new Crate({
-        server: '1148190992290299924', // StreamCraftNL | Seizoen 4
-        channel: '1148190994764943407' // #╭・💬・chat
-    })
-</script>
-	
 	<video autoplay muted loop>
       <source src="./images/Soon.mp4" type="video/mp4" />
     </video>
