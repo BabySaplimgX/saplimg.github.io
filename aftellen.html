@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SaplimgX | Aftellen</title>
+	<link href="images/Favicon.png" rel="image">
+	<link href="images/Favicon.png" rel="icon">
+	<link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            text-align: center;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        #countdown {
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body background="images/aftellen.png">
+    <h1>Aftellen tot 20 januari 2024</h1>
+    <div id="countdown"></div>
+
+    <script>
+        const targetDate = new Date('2024-01-20T00:00:00').getTime();
+        const countdownInterval = setInterval(function() {
+            const currentDate = new Date().getTime();
+            const timeLeft = targetDate - currentDate;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = 'Het is nu 20 januari 2024!';
+            } else {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = `
+                    Nog ${days} dagen, ${hours} uur, ${minutes} minuten en ${seconds} seconden te gaan.`;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
