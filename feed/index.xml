@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>SaplimgX</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>SaplimgX ook wel Giovanny genoemd!</description>
+	<lastBuildDate>Thu, 07 Dec 2023 04:44:16 +0000</lastBuildDate>
+	<language>nl-NL</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.2</generator>
+	<item>
+		<title>Hallo wereld!</title>
+		<link>./../2023/12/07/hallo-wereld/index.html</link>
+					<comments>./../2023/12/07/hallo-wereld/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[SaplimgX]]></dc:creator>
+		<pubDate>Thu, 07 Dec 2023 04:44:16 +0000</pubDate>
+				<category><![CDATA[Niet gecategoriseerd]]></category>
+		<guid isPermaLink="false">./../index.html?p=1</guid>
+
+					<description><![CDATA[Welkom bij WordPress. Dit is je eerste bericht. Bewerk of verwijder het, start dan met schrijven!]]></description>
+										<content:encoded><![CDATA[
+<p>Welkom bij WordPress. Dit is je eerste bericht. Bewerk of verwijder het, start dan met schrijven!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../2023/12/07/hallo-wereld/feed/index.html</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
