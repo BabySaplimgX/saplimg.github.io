@@ -29,28 +29,49 @@
     </style>
 </head>
 <body background="images/aftellen.png">
-    <h1>Aftellen tot 20 januari 2024</h1>
-    <div id="countdown"></div>
-
+    <h1>Tijd Sinds 20 Januari 2024</h1>
+    <p id="timeSince"></p>
+  
     <script>
-        const targetDate = new Date('2024-01-20T00:00:00').getTime();
-        const countdownInterval = setInterval(function() {
-            const currentDate = new Date().getTime();
-            const timeLeft = targetDate - currentDate;
-
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval);
-                document.getElementById('countdown').innerHTML = 'Het is nu 20 januari 2024!';
-            } else {
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                document.getElementById('countdown').innerHTML = `
-                    Nog ${days} dagen, ${hours} uur, ${minutes} minuten en ${seconds} seconden te gaan.`;
-            }
-        }, 1000);
+      function updateTime() {
+        // Datum van 20 januari 2024
+        var targetDate = new Date('2007-04-29T00:00:00');
+  
+        // Huidige datum
+        var currentDate = new Date();
+  
+        // Bereken het verschil in tijd
+        var timeDifference = currentDate - targetDate;
+  
+        // Bereken de verschillende eenheden
+        var years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
+        var months = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.44));
+        var weeks = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24 * 7));
+        var days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+  
+        // Bouw de tekst op basis van de eenheden
+        var timeText = 'Sinds 20 januari 2024 zijn er verstreken:';
+        timeText += years > 0 ? ' ' + years + ' jaar,' : '';
+        timeText += months > 0 ? ' ' + months + ' maanden,' : '';
+        timeText += weeks > 0 ? ' ' + weeks + ' weken,' : '';
+        timeText += days > 0 ? ' ' + days + ' dagen,' : '';
+        timeText += hours > 0 ? ' ' + hours + ' uur,' : '';
+        timeText += minutes > 0 ? ' ' + minutes + ' minuten,' : '';
+        timeText += seconds > 0 ? ' ' + seconds + ' seconden.' : '';
+  
+        // Toon het resultaat op de webpagina
+        document.getElementById('timeSince').textContent = timeText;
+      }
+  
+      // Roep updateTime functie aan bij het laden van de pagina
+      updateTime();
+  
+      // Vernieuw de timer elke seconde (1000 milliseconden)
+      setInterval(updateTime, 1000);
     </script>
+    
 </body>
 </html>
