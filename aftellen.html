@@ -29,13 +29,13 @@
     </style>
 </head>
 <body background="images/aftellen.png">
-    <h1>Tijd Sinds 20 Januari 2024</h1>
+    <h1>Yvo is geboren op 25 Januari 2024</h1>
     <p id="timeSince"></p>
   
     <script>
       function updateTime() {
-        // Datum van 20 januari 2024
-        var targetDate = new Date('2007-04-29T00:00:00');
+        // Datum van 25 januari 2024
+        var targetDate = new Date('2024-01-25T12:38');
   
         // Huidige datum
         var currentDate = new Date();
@@ -50,7 +50,6 @@
         var days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
         var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
   
         // Bouw de tekst op basis van de eenheden
         var timeText = 'Sinds 20 januari 2024 zijn er verstreken:';
@@ -60,7 +59,6 @@
         timeText += days > 0 ? ' ' + days + ' dagen,' : '';
         timeText += hours > 0 ? ' ' + hours + ' uur,' : '';
         timeText += minutes > 0 ? ' ' + minutes + ' minuten,' : '';
-        timeText += seconds > 0 ? ' ' + seconds + ' seconden.' : '';
   
         // Toon het resultaat op de webpagina
         document.getElementById('timeSince').textContent = timeText;
